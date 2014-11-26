@@ -1,0 +1,79 @@
+﻿@model IEnumerable<HelpDesk2.Models.Os>
+@using Microsoft.AspNet.Identity
+
+@{
+    ViewBag.Title = "Relatorio";
+}
+﻿<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="utf-8" />
+    <title>Exemplo de Relatório em PDF</title>
+
+    <!-- css -->
+    <link href="http://rotativaw7.apphb.com/Content/estilos-relatorio.css" rel="stylesheet" type="text/css" />
+</head>
+<body>
+    <div id="container">
+        <div id="cabecalho">
+            <div id="nome">
+                <h1>Relatório de Média de Tempo</h1>
+            </div>
+            <div id="unidade">
+                <h2>Help-Desk</h2>
+            </div>
+        </div>
+        <div id="corpo">
+            <div class="linha">
+                <table class="table table-striped">
+                    <thead>
+                        <tr>
+                            <th>Produto</th>
+                            <th>Descricao</th>
+                            <th>Data Abertura</th>
+                            <th>Hora Abertura</th>
+                            <th>Data Fechamento</th>
+                            <th>Hora Fechamento</th>
+                            <th>Tempo Médio</th>
+                        </tr>
+                    </thead>
+
+                    <tbody>
+                        @foreach (var item in Model)
+                        {
+                            <tr>
+                                <td>
+                                    @Html.DisplayFor(modelItem => item.Id)
+                                </td>
+                                <td>
+                                    @Html.DisplayFor(modelItem => item.Descricao)
+                                </td>
+                                <td>
+                                    @Html.DisplayFor(modelItem => item.Data)
+                                </td>
+                                <td>
+                                    @Html.DisplayFor(modelItem => item.HoraAbertura)
+                                </td>
+                                <td>
+                                    @Html.DisplayFor(modelItem => item.DataFechamento)
+                                </td>
+                                <td>
+                                    @Html.DisplayFor(modelItem => item.HoraFechamento)
+                                </td>
+                                <td>
+                                    @Html.DisplayFor(modelItem => item.Tempo)
+                                </td>
+                            </tr>
+                        }
+                    </tbody>
+                    <tfoot>
+                    </tfoot>
+                </table>
+            </div>
+        </div>
+        <div id="rodape">
+            <p>Usuário: <span>@User.Identity.GetUserName()</span> Emitido: <span>@DateTime.Now</span></p>
+        </div>
+    </div>
+</body>
+</html>

@@ -1,0 +1,86 @@
+﻿@model HelpDesk2.Models.Os
+
+@{
+    ViewBag.Title = "Details";
+    ViewBag.TituloPanel = "Ordem de Serviço";
+}
+
+<h2>Detalhe</h2>
+
+<div>
+	<hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.Cliente.Nome)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Cliente.Nome)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Status.Descricao)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Status.Descricao)
+        </dd>
+
+        <dt>
+            Técnico
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Usuario)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Descricao)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Descricao)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Data)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Data)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Prioridades)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Prioridades)
+        </dd>
+
+    </dl>
+    <div class="row">
+        <div class="form-group col-lg-12 col-md-12">
+            <table id="tabela" class="table table-striped">
+                <thead>
+                    <tr>
+                        <th>Operador</th>
+                        <th>Descrição</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    @foreach (var item in Model.Nota)
+                    {
+                        <tr>
+                            <td width="110">@item.Operador</td>
+                            <td>@item.Descricao</td>
+                        </tr>
+                    }
+                </tbody>
+            </table>
+        </div>
+    </div>
+</div>
+<p>
+    @Html.ActionLink("Voltar", "Index")
+</p>
